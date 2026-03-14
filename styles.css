@@ -1,0 +1,683 @@
+/* ========================================
+   Developer Portfolio - Custom Styles
+   ======================================== */
+
+/* CSS Variables */
+:root {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #111111;
+    --bg-tertiary: #1a1a1a;
+    --border-color: #2a2a2a;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-tertiary: #666666;
+    --accent: #e0e0e0;
+    --terminal-green: #00ff88;
+    --terminal-blue: #4a9eff;
+    --terminal-purple: #a855f7;
+    --terminal-yellow: #fbbf24;
+    --terminal-orange: #f97316;
+    --transition: all 0.3s ease;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Font Classes */
+.font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ========================================
+   Navigation
+   ======================================== */
+#navbar {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+#navbar.scrolled {
+    background: rgba(10, 10, 10, 0.95);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    position: relative;
+    transition: var(--transition);
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--terminal-green);
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Mobile Menu Button */
+#mobile-menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    transition: var(--transition);
+}
+
+#mobile-menu-btn.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+#mobile-menu-btn.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+#mobile-menu-btn.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Grid Background Pattern */
+.bg-grid-pattern {
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    position: absolute;
+    inset: 0;
+}
+
+/* Terminal Window */
+.terminal-window {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.terminal-header {
+    background: var(--bg-tertiary);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-btn.close {
+    background: #ff5f56;
+}
+
+.terminal-btn.minimize {
+    background: #ffbd2e;
+}
+
+.terminal-btn.maximize {
+    background: #27ca40;
+}
+
+.terminal-title {
+    flex: 1;
+    text-align: center;
+    color: var(--text-tertiary);
+}
+
+.terminal-body {
+    position: relative;
+}
+
+/* ========================================
+   Buttons
+   ======================================== */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border: 2px solid var(--text-primary);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.btn-secondary:hover {
+    border-color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   About Section
+   ======================================== */
+.code-block {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.code-header {
+    background: var(--bg-tertiary);
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.code-content {
+    background: var(--bg-secondary);
+}
+
+/* Stats Cards */
+.stat-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    border-color: var(--text-tertiary);
+    transform: translateY(-4px);
+}
+
+/* ========================================
+   Skills Section
+   ======================================== */
+.skill-category {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 24px;
+    transition: var(--transition);
+}
+
+.skill-category:hover {
+    border-color: var(--text-tertiary);
+}
+
+.skill-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    transition: var(--transition);
+    cursor: default;
+}
+
+.skill-tag:hover {
+    border-color: var(--terminal-green);
+    color: var(--terminal-green);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+}
+
+/* ========================================
+   Projects Section
+   ======================================== */
+.project-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.project-card:hover {
+    border-color: var(--text-tertiary);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    background: var(--bg-tertiary);
+}
+
+.folder-icon {
+    transition: var(--transition);
+}
+
+.project-card:hover .folder-icon {
+    transform: scale(1.1);
+}
+
+.project-link {
+    color: var(--text-tertiary);
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.project-card:hover .project-link {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.project-link:hover {
+    color: var(--terminal-green);
+}
+
+/* Tech Tags */
+.tech-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    padding: 4px 8px;
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 3px;
+    color: var(--terminal-green);
+}
+
+/* ========================================
+   GitHub Section
+   ======================================== */
+.github-stat {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.github-stat:hover {
+    border-color: var(--text-tertiary);
+    transform: translateY(-2px);
+}
+
+.repo-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.repo-card:hover {
+    border-color: var(--text-tertiary);
+    transform: translateX(4px);
+    background: var(--bg-tertiary);
+}
+
+/* ========================================
+   Achievements Section
+   ======================================== */
+.achievement-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.achievement-card:hover {
+    border-color: var(--text-tertiary);
+    transform: translateY(-4px);
+}
+
+.achievement-icon {
+    transition: var(--transition);
+}
+
+.achievement-card:hover .achievement-icon {
+    transform: scale(1.1);
+}
+
+/* ========================================
+   Contact Section
+   ======================================== */
+.contact-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 12px 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.contact-item:hover {
+    border-color: var(--text-tertiary);
+    transform: translateX(4px);
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    margin-right: 16px;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.contact-item:hover .contact-icon {
+    background: var(--terminal-green);
+    color: var(--bg-primary);
+}
+
+/* Contact Form */
+.form-input {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.form-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.form-input:focus {
+    box-shadow: none;
+}
+
+.form-input:focus {
+    border-color: var(--terminal-green);
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.social-link {
+    color: var(--text-tertiary);
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   Scrollbar
+   ======================================== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-tertiary);
+}
+
+/* ========================================
+   Selection
+   ======================================== */
+::selection {
+    background: var(--terminal-green);
+    color: var(--bg-primary);
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.cursor-blink {
+    animation: blink 1s infinite;
+}
+
+/* Initial states for AOS */
+[data-aos="fade-up"] {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+[data-aos="fade-up"].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========================================
+   Responsive Styles
+   ======================================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .terminal-body {
+        padding: 24px;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+
+    /* Navigation */
+    .nav-link {
+        display: block;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    /* Hero */
+    .terminal-window {
+        margin: 0 16px;
+    }
+
+    .terminal-body {
+        padding: 20px 16px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .font-mono.text-5xl {
+        font-size: 2rem;
+    }
+
+    .font-mono.text-xl,
+    .font-mono.text-2xl {
+        font-size: 1rem;
+    }
+
+    /* Sections */
+    section {
+        padding: 80px 0;
+    }
+
+    /* Section Headers */
+    .flex.items-center.mb-12 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .flex-1.h-px.bg-gray-800.ml-6 {
+        display: none;
+    }
+
+    /* Stats */
+    .grid.grid-cols-2.md\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Projects */
+    .grid.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+
+    /* GitHub */
+    .grid.md\:grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+
+    /* Achievements */
+    .grid.md\:grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact */
+    .grid.md\:grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    .flex-col.md\:flex-row {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+.text-green-400 {
+    color: var(--terminal-green);
+}
+
+.text-blue-400 {
+    color: var(--terminal-blue);
+}
+
+.text-purple-400 {
+    color: var(--terminal-purple);
+}
+
+.text-yellow-300 {
+    color: var(--terminal-yellow);
+}
+
+.text-orange-300 {
+    color: var(--terminal-orange);
+}
+
+.hover\:text-green-400:hover {
+    color: var(--terminal-green);
+}
+
+/* Cursor for typing animation */
+.typed-cursor {
+    color: var(--terminal-green);
+    font-weight: bold;
+}
