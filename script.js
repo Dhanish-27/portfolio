@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initSmoothScroll();
   initSectionObserver();
+  initScrollChoreography();
   initNetworkBackground();
 });
 
@@ -62,6 +63,43 @@ function initSectionObserver() {
   }, observerOptions);
 
   sections.forEach((section) => observer.observe(section));
+}
+
+function initScrollChoreography() {
+  const animatedElements = document.querySelectorAll('[data-aos]');
+  if (!animatedElements.length) return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) {
+    animatedElements.forEach((el) => el.classList.add('aos-animate'));
+    return;
+  }
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -5% 0px',
+    threshold: 0.08
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const el = entry.target;
+      const delay = el.getAttribute('data-aos-delay') || 0;
+
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          el.classList.add('aos-animate');
+        }, parseInt(delay, 10));
+      } else {
+        const rect = el.getBoundingClientRect();
+        if (rect.top > window.innerHeight) {
+          el.classList.remove('aos-animate');
+        }
+      }
+    });
+  }, observerOptions);
+
+  animatedElements.forEach((el) => observer.observe(el));
 }
 
 /* --------------------------------------------------------------------------

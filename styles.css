@@ -100,6 +100,155 @@ body {
   font-family: var(--font-mono);
 }
 
+/* ==========================================================================
+   Dynamic Ultra-Smooth Animate On Scroll (AOS Choreography Engine)
+   ========================================================================== */
+[data-aos] {
+  opacity: 0;
+  will-change: transform, opacity, filter;
+  transition-property: opacity, transform, filter;
+  transition-duration: 1.25s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 1. Hero 3D Console Perspective Tilt Reveal */
+[data-aos="hero-console"] {
+  transform: perspective(1200px) rotateX(14deg) translateY(70px) scale(0.92);
+  filter: blur(10px);
+}
+
+[data-aos="hero-console"].aos-animate {
+  opacity: 1;
+  transform: perspective(1200px) rotateX(0deg) translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* 2. DEVLAN Main Showcase Emergence */
+[data-aos="devlan-emerge"] {
+  transform: scale(0.84) translateY(90px);
+  filter: blur(16px);
+}
+
+[data-aos="devlan-emerge"].aos-animate {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+}
+
+/* 3. Directional & Staggered Project Cards */
+[data-aos="slide-right"] {
+  transform: translateX(-110px) scale(0.92);
+  filter: blur(10px);
+}
+
+[data-aos="slide-right"].aos-animate {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  filter: blur(0);
+}
+
+[data-aos="slide-left"] {
+  transform: translateX(110px) scale(0.92);
+  filter: blur(10px);
+}
+
+[data-aos="slide-left"].aos-animate {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  filter: blur(0);
+}
+
+[data-aos="zoom-in"] {
+  transform: scale(0.80) translateY(70px);
+  filter: blur(12px);
+}
+
+[data-aos="zoom-in"].aos-animate {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+}
+
+[data-aos="flip-up"] {
+  transform: perspective(1000px) rotateX(-22deg) translateY(80px);
+  filter: blur(10px);
+}
+
+[data-aos="flip-up"].aos-animate {
+  opacity: 1;
+  transform: perspective(1000px) rotateX(0deg) translateY(0);
+  filter: blur(0);
+}
+
+/* 4. Lab Cards Stagger Pop */
+[data-aos="lab-pop"] {
+  transform: scale(0.82) rotate(-5deg) translateY(70px);
+  filter: blur(10px);
+}
+
+[data-aos="lab-pop"].aos-animate {
+  opacity: 1;
+  transform: scale(1) rotate(0deg) translateY(0);
+  filter: blur(0);
+}
+
+/* 5. Engineering Notes Terminal Reveal */
+[data-aos="note-reveal"] {
+  transform: translateY(60px);
+  filter: blur(8px);
+}
+
+[data-aos="note-reveal"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* 6. About Narrative & Tech Matrix Stagger */
+[data-aos="fade-up"] {
+  transform: translateY(65px);
+  filter: blur(8px);
+}
+
+[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+[data-aos="tech-pop"] {
+  transform: scale(0.85) translateY(50px);
+  filter: blur(6px);
+}
+
+[data-aos="tech-pop"].aos-animate {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+}
+
+/* 7. Contact Typography & Form Emergence */
+[data-aos="contact-title"] {
+  transform: scale(0.86) translateY(60px);
+  filter: blur(8px);
+}
+
+[data-aos="contact-title"].aos-animate {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
 h1,
 h2,
 h3,
